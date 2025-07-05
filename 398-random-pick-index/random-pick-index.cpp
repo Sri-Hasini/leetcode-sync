@@ -1,21 +1,15 @@
 class Solution {
 public:
-vector<int>nums;
+    vector<int> v;
     Solution(vector<int>& nums) {
-       this->nums.swap(nums);
+        v=nums;
     }
     
     int pick(int target) {
-        int t;
-        vector<int>indices;
-        for(int i=0;i<nums.size();i++){
-            if(target==nums[i]){
-              indices.push_back(i);
-            }
+        while(true){
+            int idx = rand()%v.size();
+            if(target == v[idx]) return idx;
         }
-        int l=indices.size();
-        int rd=indices[rand()%l];
-        return rd;
     }
 };
 
