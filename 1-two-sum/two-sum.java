@@ -12,7 +12,7 @@ class Solution {
                         g=i;
                         h=j;
                     }
-                j=x;
+                    j=x;
             }
         }
         a[0]=g;
