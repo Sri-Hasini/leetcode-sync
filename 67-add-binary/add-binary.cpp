@@ -24,7 +24,7 @@ public:
                     s+='0';
                     c = '1';
                 }
-            }
+            }   
             else if(a[i]==b[i] && a[i] =='0'){
                 if(c=='1'){
                     s+='1';
@@ -80,5 +80,8 @@ public:
         if(c=='1')s+=c;
         reverse(s.begin(),s.end());
         return s;
+        
+
+
     }
 };
