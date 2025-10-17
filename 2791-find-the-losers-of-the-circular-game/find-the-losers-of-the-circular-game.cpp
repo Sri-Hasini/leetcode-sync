@@ -8,7 +8,7 @@ public:
         while (a[cur] != 2) {
             a[(cur + (cnt * k)) % n]++;
             cur = (cur + (cnt * k)) % n;
-            cout << cur;
+            // cout << cur;
             cnt++;
         }
         a[a.size() - 1] = a[0];
