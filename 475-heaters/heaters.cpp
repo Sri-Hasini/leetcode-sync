@@ -1,14 +1,13 @@
 class Solution {
 public:
     int findRadius(vector<int>& houses, vector<int>& heaters) {
-        int maxi = INT_MIN;
-        for (int i = 0; i < houses.size(); i++) {
-            int mini = INT_MAX;
-            for (int j = 0; j < heaters.size(); j++) {
-                mini = min(mini, abs(houses[i] - heaters[j]));
-            }
-            maxi = max(maxi, mini);
+        sort(houses.begin(), houses.end());
+        sort(heaters.begin(), heaters.end());
+        int cur = 0, r = 0;
+        for (auto h : houses) {
+            while ((cur + 1 < heaters.size()) && (abs(heaters[cur + 1] - h) <= abs(heaters[cur] - h))) cur++;
+            r = max(r, abs(heaters[cur] - h));
         }
-        return maxi;
+        return r;
     }
 };
