@@ -1,43 +1,43 @@
 class Solution {
 public:
-    vector<int> spiralOrder(vector<vector<int>>& matrix) {
-        vector<int>answer;
-        int i=0;
-        int j=matrix[0].size()-1;
-        int k=matrix.size()-1;
-        int l=0;
-        
-        while(1){
-            if(l>j){
-                break;
+    vector<int> spiralOrder(vector<vector<int>>& a) {
+        int m=a.size(),i=0,j=0,k;
+        int n=a[0].size();
+        vector<int>ans;
+        while(m>1&&n>1){
+            for(k=1;k<=(n-1);k++){
+                ans.push_back(a[i][j]);
+                j++;
             }
-            for(int o=l;o<=j;o++){
-                answer.push_back(matrix[i][o]);
+            for(k=1;k<=(m-1);k++){
+                ans.push_back(a[i][j]);
+                i++;
             }
+            for(k=1;k<=(n-1);k++){
+                ans.push_back(a[i][j]);
+                j--;
+            }
+            for(k=1;k<=(m-1);k++){
+                ans.push_back(a[i][j]);
+                i--;
+            }
+            m=m-2;
+            n=n-2;
             i++;
-            if(i>k){
-                break;
-            }
-            for(int o=i;o<=k;o++){
-                answer.push_back(matrix[o][j]);
-            }
-            j--;
-            if(l>j){
-                break;
-            }
-            for(int o=j;o>=l;o--){
-                answer.push_back(matrix[k][o]);
-            }
-            k--;
-            if(i>k){
-                break;
-            }
-            for(int o=k;o>=i;o--){
-                answer.push_back(matrix[o][l]);
-            }
-            l++;
-            
+            j++;
         }
-        return answer;
+        if(n==1){
+            while(m--){
+                ans.push_back(a[i][j]);
+                i++;
+            }
+        }
+        else if(m==1){
+            while(n--){
+                ans.push_back(a[i][j]);
+                j++;
+            }
+        }
+        return ans;
     }
 };
