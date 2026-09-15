@@ -1,26 +1,25 @@
 class Solution {
 public:
-    int seive[5000001];
+    int countPrimes(int n) {
+        if (n < 3) {
+            return 0;
+        }
+        bool isprime[n];
 
-    void primes(int x){
-        // for (int i = 0; i <= 10; i++) cout << seive[i] << " ";
-        seive[0] = seive[1] = 1;
-        for (long long i = 2; i * i <= x; i++) {
-            if (seive[i] == 0) {
-                for (long long j = i * i; j < x; j+=i) {
-                    seive[j] = 1;
+        memset(isprime, true, n);
+
+        int result = n / 2;
+        for (int i = 3; i * i < n; i += 2) {
+            if (isprime[i]) {
+                int d = i * 2;
+                for (int j = i * i; j < n; j += d) {
+                    if (isprime[j]) {
+                        isprime[j] = false;
+                        result--;
+                    }
                 }
             }
         }
-    }
-    int countPrimes(int n) {
-        primes(n);
-        int cnt = 0;
-        for (int i = 2; i < n; i++) {
-            if (seive[i] == 0) {
-                cnt++;
-            }
-        }
-        return cnt;
+        return result;
     }
 };
