@@ -15,6 +15,8 @@ public:
         vector<vector<int>> ds ;
         vector <int> ans;
         subsequence(nums,ans,ds,n);
-        return ds;
+        set<vector <int>> dss(ds.begin(), ds.end());
+        vector <vector <int>> d(dss.begin(), dss.end());
+        return d;
     }
 };
